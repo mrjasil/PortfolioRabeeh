@@ -8,6 +8,7 @@ export default function SkillsEducation() {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const skillsRef = useRef<HTMLDivElement>(null);
   const educationRef = useRef<HTMLDivElement>(null);
+  const toolsRef = useRef<HTMLDivElement>(null);
   
   const [isMounted, setIsMounted] = useState(false);
 
@@ -15,7 +16,6 @@ export default function SkillsEducation() {
     { name: "Cinematography", level: 95, color: "from-blue-400 to-cyan-400" },
     { name: "Video Editing", level: 90, color: "from-purple-400 to-pink-400" },
     { name: "Color Grading", level: 88, color: "from-orange-400 to-red-400" },
-    // { name: "Directing", level: 85, color: "from-green-400 to-emerald-400" },
     { name: "Visual Storytelling", level: 92, color: "from-yellow-400 to-orange-400" },
     { name: "Sound Design", level: 80, color: "from-indigo-400 to-purple-400" }
   ];
@@ -33,7 +33,58 @@ export default function SkillsEducation() {
       institution: "",
       description: "10th Grade"
     },
-    
+  ];
+
+  const tools = [
+    { 
+      name: "Adobe Premiere Pro", 
+      icon: "🎬",
+      color: "from-purple-500 to-pink-500",
+      bgColor: "bg-purple-500/10",
+      borderColor: "border-purple-500/30"
+    },
+    { 
+      name: "LightRoom", 
+      icon: "🖼️",
+      color: "from-blue-500 to-cyan-500",
+      bgColor: "bg-blue-500/10",
+      borderColor: "border-blue-500/30"
+    },
+    { 
+      name: "Capcut", 
+      icon: "✂️",
+      color: "from-green-500 to-emerald-500",
+      bgColor: "bg-green-500/10",
+      borderColor: "border-green-500/30"
+    },
+    { 
+      name: "Photoshop", 
+      icon: "🎨",
+      color: "from-indigo-500 to-purple-500",
+      bgColor: "bg-indigo-500/10",
+      borderColor: "border-indigo-500/30"
+    },
+    { 
+      name: "Vn", 
+      icon: "📱",
+      color: "from-orange-500 to-red-500",
+      bgColor: "bg-orange-500/10",
+      borderColor: "border-orange-500/30"
+    },
+    { 
+      name: "Snapseed", 
+      icon: "✨",
+      color: "from-yellow-500 to-amber-500",
+      bgColor: "bg-yellow-500/10",
+      borderColor: "border-yellow-500/30"
+    },
+    { 
+      name: "Capcut Pro", 
+      icon: "⚡",
+      color: "from-teal-500 to-cyan-500",
+      bgColor: "bg-teal-500/10",
+      borderColor: "border-teal-500/30"
+    }
   ];
 
   useEffect(() => {
@@ -103,6 +154,28 @@ export default function SkillsEducation() {
         }
       );
 
+      // Tools animation
+      gsap.fromTo(toolsRef.current?.children || [],
+        {
+          opacity: 0,
+          y: 20,
+          scale: 0.8
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: toolsRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none"
+          }
+        }
+      );
+
       // Animate skill bars
       if (skillsRef.current) {
         const skillBars = skillsRef.current.querySelectorAll('.skill-bar-fill');
@@ -119,10 +192,59 @@ export default function SkillsEducation() {
         });
       }
 
+      // Continuous floating animation for tools
+      if (toolsRef.current) {
+        const toolItems = Array.from(toolsRef.current.children);
+        toolItems.forEach((item, index) => {
+          gsap.to(item, {
+            y: -5,
+            duration: 2,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+            delay: index * 0.2
+          });
+        });
+      }
+
     }, sectionRef);
 
     return () => ctx.revert();
   }, [isMounted]);
+
+  const handleToolHover = (e: React.MouseEvent<HTMLSpanElement>) => {
+    if (window.innerWidth > 768) {
+      gsap.to(e.currentTarget, {
+        scale: 1.1,
+        y: -5,
+        duration: 0.3,
+        ease: "power2.out"
+      });
+    }
+  };
+
+  const handleToolLeave = (e: React.MouseEvent<HTMLSpanElement>) => {
+    if (window.innerWidth > 768) {
+      gsap.to(e.currentTarget, {
+        scale: 1,
+        y: 0,
+        duration: 0.3,
+        ease: "power2.out"
+      });
+    }
+  };
+
+  const handleToolClick = (e: React.MouseEvent<HTMLSpanElement>) => {
+    // Mobile tap feedback
+    if (window.innerWidth <= 768) {
+      gsap.to(e.currentTarget, {
+        scale: 0.9,
+        duration: 0.1,
+        yoyo: true,
+        repeat: 1
+      });
+    }
+  };
 
   return (
     <section 
@@ -198,19 +320,45 @@ export default function SkillsEducation() {
               ))}
             </div>
 
-            {/* Additional Skills Tags */}
+            {/* Enhanced Tools & Software Section */}
             <div className="mt-10">
-              <h4 className="text-lg font-semibold text-gray-300 mb-4 text-center">Tools & Software</h4>
-              <div className="flex flex-wrap justify-center gap-3">
-                {[
-                  "Adobe Premiere Pro", "LightRoom", "Capcut", 
-                  "Photoshop", "Vn", "Snapseed", "Capcut Pro"
-                ].map((tool) => (
+              <h4 className="text-lg font-semibold text-gray-300 mb-6 text-center">Tools & Software</h4>
+              <div 
+                ref={toolsRef}
+                className="flex flex-wrap justify-center gap-3"
+              >
+                {tools.map((tool) => (
                   <span 
-                    key={tool}
-                    className="px-4 py-2 bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-full text-gray-300 text-sm font-light tracking-wide hover:border-gray-500/50 transition-all duration-300"
+                    key={tool.name}
+                    className={`
+                      group relative inline-flex items-center gap-2 px-4 py-3 
+                      ${tool.bgColor} ${tool.borderColor}
+                      backdrop-blur-sm border rounded-xl text-gray-200 
+                      text-sm font-medium tracking-wide transition-all duration-300 
+                      hover:shadow-lg cursor-pointer overflow-hidden
+                    `}
+                    onMouseEnter={handleToolHover}
+                    onMouseLeave={handleToolLeave}
+                    onClick={handleToolClick}
                   >
-                    {tool}
+                    {/* Gradient border on hover */}
+                    <div className={`absolute inset-0 bg-gradient-to-r ${tool.color} rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10`} />
+                    
+                    {/* Background */}
+                    <div className="absolute inset-0 bg-gray-800/50 rounded-xl -z-20" />
+                    
+                    {/* Icon with animation */}
+                    <span className="text-lg transform group-hover:scale-110 transition-transform duration-300">
+                      {tool.icon}
+                    </span>
+                    
+                    {/* Tool name */}
+                    <span className="group-hover:text-white transition-colors duration-300">
+                      {tool.name}
+                    </span>
+                    
+                    {/* Shine effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
                   </span>
                 ))}
               </div>
@@ -263,26 +411,6 @@ export default function SkillsEducation() {
                 </div>
               ))}
             </div>
-
-            {/* Certifications - commented out but fixed if you want to use it */}
-            {/* <div className="mt-10">
-              <h4 className="text-lg font-semibold text-gray-300 mb-4 text-center">Certifications</h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {[
-                  "Advanced Color Grading Masterclass",
-                  "Cinematic Lighting Techniques",
-                  "Digital Film Production",
-                  "Sound Design for Film"
-                ].map((cert) => (
-                  <div 
-                    key={cert}
-                    className="bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-xl p-4 text-center hover:border-cyan-500/30 transition-all duration-300"
-                  >
-                    <span className="text-gray-300 text-sm font-light">{cert}</span>
-                  </div>
-                ))}
-              </div>
-            </div> */}
           </div>
         </div>
       </div>

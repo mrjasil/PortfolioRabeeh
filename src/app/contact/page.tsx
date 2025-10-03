@@ -151,7 +151,7 @@ export default function Contact() {
           <div className="w-24 h-1 bg-gradient-to-r from-transparent via-gray-600 to-transparent mx-auto mb-6" />
           
           <p className="text-lg xs:text-xl sm:text-2xl text-gray-400 font-light tracking-wide max-w-2xl mx-auto px-4">
-            Have a project in mind? Let's create something cinematic together.
+            Have a project in mind? Let&apso;s create something cinematic together.
           </p>
         </div>
 
@@ -205,7 +205,7 @@ export default function Contact() {
               {/* Status Messages */}
               {submitStatus === 'success' && (
                 <div className="p-4 bg-green-500/20 border border-green-500/50 rounded-2xl text-green-300 text-center">
-                  ✅ Thank you! Your message has been sent successfully. I'll get back to you soon!
+                  ✅ Thank you! Your message has been sent successfully. I&apso;ll get back to you soon!
                 </div>
               )}
 

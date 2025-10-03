@@ -145,16 +145,16 @@ export default function About() {
               ref={textRef}
               className="text-gray-300 leading-relaxed text-lg md:text-xl mb-8 opacity-0"
             >
-              Hi, I'm <span className="text-gray-200 font-semibold">Rabeeh</span>, a passionate 
+              Hi, I&apos;m <span className="text-gray-200 font-semibold">Rabeeh</span>, a passionate 
               <span className="text-gray-200 font-semibold"> cinematic storyteller</span> and visual artist 
               dedicated to capturing timeless stories through my lens. With years of experience in the film 
               industry, I specialize in creating emotionally resonant visuals that transcend the ordinary.
             </p>
 
             <p className="text-gray-400 leading-relaxed text-lg mb-8">
-              Whether it's <span className="text-gray-300">weddings</span>, <span className="text-gray-300">commercial shoots</span>, 
-              or <span className="text-gray-300">creative projects</span>, I approach each frame with an artist's eye and a 
-              director's vision. My work is characterized by dramatic lighting, compelling composition, 
+              Whether it&apso;s <span className="text-gray-300">weddings</span>, <span className="text-gray-300">commercial shoots</span>, 
+              or <span className="text-gray-300">creative projects</span>, I approach each frame with an artist&apso;s eye and a 
+              director&apso;s vision. My work is characterized by dramatic lighting, compelling composition, 
               and a deep understanding of visual narrative.
             </p>
 
@@ -187,7 +187,7 @@ export default function About() {
 
             {/* Floating badge */}
             <div className="absolute -bottom-4 -right-4 bg-gray-900/90 backdrop-blur-sm border border-gray-700 rounded-lg px-4 py-2 transform rotate-3">
-              <span className="text-gray-300 text-sm font-light tracking-wider">DIRECTOR'S VIEW</span>
+              <span className="text-gray-300 text-sm font-light tracking-wider">DIRECTOR&apso;S VIEW</span>
             </div>
           </div>
         </div>
