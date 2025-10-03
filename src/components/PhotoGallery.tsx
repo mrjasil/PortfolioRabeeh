@@ -2,9 +2,10 @@
 
 import { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
+import Image from 'next/image';
 
 export default function PhotoGallery() {
-  const photos = ["/archpic.jpg", "/archpic1.jpg", "/archpic2.jpg","bridepic.jpg","bridepic1.jpg","weds.jpg"];
+  const photos = ["/archpic.jpg", "/archpic1.jpg", "/archpic2.jpg", "/bridepic.jpg", "/bridepic1.jpg", "/weds.jpg"];
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
@@ -80,10 +81,13 @@ export default function PhotoGallery() {
       });
       
       // Highlight effect
-      gsap.to(e.currentTarget.querySelector('.image-overlay'), {
-        opacity: 0,
-        duration: 0.3
-      });
+      const overlay = e.currentTarget.querySelector('.image-overlay') as HTMLElement;
+      if (overlay) {
+        gsap.to(overlay, {
+          opacity: 0,
+          duration: 0.3
+        });
+      }
     }
   };
 
@@ -97,10 +101,13 @@ export default function PhotoGallery() {
         ease: "power2.out"
       });
       
-      gsap.to(e.currentTarget.querySelector('.image-overlay'), {
-        opacity: 0.3,
-        duration: 0.3
-      });
+      const overlay = e.currentTarget.querySelector('.image-overlay') as HTMLElement;
+      if (overlay) {
+        gsap.to(overlay, {
+          opacity: 0.3,
+          duration: 0.3
+        });
+      }
     }
   };
 
@@ -156,10 +163,10 @@ export default function PhotoGallery() {
           ref={galleryRef}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 xs:gap-6 sm:gap-8 lg:gap-10 px-2"
         >
-          {photos.map((src, idx) => (
+          {photos.map((src) => (
             <div
-              key={idx}
-              className="group relative aspect-[4/5] sm:aspect-[4`/4] rounded-2xl sm:rounded-2xl overflow-hidden transform-gpu cursor-pointer bg-gray-800 shadow-2xl"
+              key={src}
+              className="group relative aspect-[4/5] sm:aspect-[4/4] rounded-2xl sm:rounded-2xl overflow-hidden transform-gpu cursor-pointer bg-gray-800 shadow-2xl"
               onMouseEnter={handleImageHover}
               onMouseLeave={handleImageLeave}
               onClick={handleImageClick}
@@ -169,9 +176,11 @@ export default function PhotoGallery() {
               }}
             >
               {/* Main Image */}
-              <img
+              <Image
                 src={src}
-                alt={`Cinematic Shot ${idx + 1}`}
+                alt={`Cinematic Shot ${src}`}
+                width={400}
+                height={500}
                 className="absolute inset-0 w-full h-full object-cover transform-gpu group-hover:scale-110 transition-transform duration-700 ease-out"
                 loading="lazy"
               />
@@ -189,7 +198,7 @@ export default function PhotoGallery() {
               <div className="absolute bottom-0 left-0 right-0 p-4 xs:p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                 <div className="text-white">
                   <h3 className="text-lg xs:text-xl sm:text-2xl font-bold mb-2 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500 delay-100">
-                    SHOT {String(idx + 1).padStart(2, '0')}
+                    {src.replace('/', '').toUpperCase().replace('.JPG', '')}
                   </h3>
                   <p className="text-gray-300 text-sm xs:text-base opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-200">
                     Cinematic Photography

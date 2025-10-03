@@ -148,14 +148,14 @@ export default function Experience() {
           <div className="w-20 sm:w-24 h-0.5 sm:h-1 bg-gradient-to-r from-transparent via-gray-600 to-transparent mx-auto mb-4 sm:mb-6" />
           
           <p className="text-base xs:text-lg sm:text-xl md:text-2xl text-gray-400 font-light tracking-wide max-w-2xl sm:max-w-3xl mx-auto px-2 sm:px-4 leading-relaxed">
-            {`3+ years of crafting visual stories across weddings, architecture, and corporate projects. 
-            Currently shaping digital narratives at TipTop Architects.`}
+            3+ years of crafting visual stories across weddings, architecture, and corporate projects. 
+            Currently shaping digital narratives at TipTop Architects.
           </p>
         </div>
 
         {/* Stats Section - Improved mobile spacing */}
         <div ref={statsRef} className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-16 md:mb-20">
-          {stats.map((stat, index) => (
+          {stats.map((stat) => (
             <div 
               key={stat.label}
               className="text-center p-4 sm:p-5 md:p-6 bg-gray-800/20 backdrop-blur-sm border border-gray-700/50 rounded-xl sm:rounded-2xl hover:border-gray-600/50 transition-all duration-500 group"
@@ -176,11 +176,11 @@ export default function Experience() {
           <div className="absolute left-4 sm:left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-gray-700 via-gray-600 to-gray-700 transform md:-translate-x-1/2 hidden sm:block" />
           
           <div className="space-y-8 sm:space-y-12">
-            {experiences.map((exp, index) => (
+            {experiences.map((exp) => (
               <div 
-                key={index}
+                key={`${exp.period}-${exp.role}`}
                 className={`relative flex flex-col sm:flex-row ${
-                  index % 2 === 0 ? 'sm:flex-row-reverse' : ''
+                  exp.period === "2025 - Present" ? 'sm:flex-row-reverse' : ''
                 } gap-4 sm:gap-6 md:gap-8 group`}
               >
                 {/* Timeline dot - visible on all screens but positioned differently */}
@@ -217,8 +217,8 @@ export default function Experience() {
 
                     {/* Achievements */}
                     <div className="space-y-1 sm:space-y-2">
-                      {exp.achievements.map((achievement, achievementIndex) => (
-                        <div key={achievementIndex} className="flex items-center gap-2 sm:gap-3">
+                      {exp.achievements.map((achievement) => (
+                        <div key={achievement} className="flex items-center gap-2 sm:gap-3">
                           <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-gray-400 to-gray-300 rounded-full flex-shrink-0" />
                           <span className="text-gray-300 text-xs sm:text-sm font-light leading-tight">
                             {achievement}

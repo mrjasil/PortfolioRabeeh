@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
+import Image from 'next/image';
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -271,9 +272,9 @@ export default function Hero() {
 
         {/* Subtle particle effect with fixed positions - reduced on mobile */}
         <div ref={particleRef} className="absolute inset-0 opacity-0 hidden sm:block">
-          {particlePositions.map((position, i) => (
+          {particlePositions.map((position) => (
             <div
-              key={i}
+              key={`${position.left}-${position.top}`}
               className="absolute w-1 h-1 bg-gray-500/20 rounded-full"
               style={{
                 left: `${position.left}%`,
@@ -363,10 +364,13 @@ export default function Hero() {
             <div className="relative group">
               {/* Main profile image container */}
               <div className="relative w-48 h-48 xs:w-56 xs:h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-gray-600/70 shadow-2xl backdrop-blur-sm">
-                <img 
+                <Image 
                   src="/rabeeh.jpg" // Update with your actual image path
                   alt="Muhammed Rabeeh"
+                  width={320}
+                  height={320}
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                  priority
                 />
                 
                 {/* Gradient overlay */}

@@ -25,12 +25,13 @@ export default function SkillsEducation() {
       year: "2023-2024",
       degree: "Higher Secondary",
       institution: "Al-ihsan English School",
-      description: "commerce"
+      description: "Commerce"
     },
     {
       year: "2021-2023",
       degree: "PPTMYHSS",
-      description: "10TH"
+      institution: "",
+      description: "10th Grade"
     },
     
   ];
@@ -173,7 +174,7 @@ export default function SkillsEducation() {
             </div>
 
             <div ref={skillsRef} className="space-y-6">
-              {skills.map((skill, index) => (
+              {skills.map((skill) => (
                 <div key={skill.name} className="group">
                   <div className="flex justify-between items-center mb-3">
                     <span className="text-gray-300 font-medium tracking-wide text-sm xs:text-base">
@@ -228,9 +229,9 @@ export default function SkillsEducation() {
             </div>
 
             <div ref={educationRef} className="space-y-8">
-              {education.map((edu, index) => (
+              {education.map((edu) => (
                 <div 
-                  key={index}
+                  key={`${edu.year}-${edu.degree}`}
                   className="group relative bg-gray-800/20 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-gray-600/50 transition-all duration-500 hover:transform hover:scale-105"
                 >
                   {/* Timeline dot */}
@@ -247,9 +248,11 @@ export default function SkillsEducation() {
                     {edu.degree}
                   </h4>
                   
-                  <p className="text-cyan-300 font-medium mb-3 text-lg tracking-wide">
-                    {edu.institution}
-                  </p>
+                  {edu.institution && (
+                    <p className="text-cyan-300 font-medium mb-3 text-lg tracking-wide">
+                      {edu.institution}
+                    </p>
+                  )}
                   
                   <p className="text-gray-400 font-light leading-relaxed text-sm xs:text-base">
                     {edu.description}
@@ -261,7 +264,7 @@ export default function SkillsEducation() {
               ))}
             </div>
 
-            {/* Certifications */}
+            {/* Certifications - commented out but fixed if you want to use it */}
             {/* <div className="mt-10">
               <h4 className="text-lg font-semibold text-gray-300 mb-4 text-center">Certifications</h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

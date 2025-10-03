@@ -8,10 +8,9 @@ interface ServiceCardProps {
   icon: string;
   color: string;
   features: string[];
-  index: number;
 }
 
-export default function ServiceCard({ title, desc, icon, color, features, index }: ServiceCardProps) {
+export default function ServiceCard({ title, desc, icon, color, features }: ServiceCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
 
   const handleHover = () => {
@@ -67,8 +66,8 @@ export default function ServiceCard({ title, desc, icon, color, features, index 
 
       {/* Features List */}
       <div className="space-y-2">
-        {features.map((feature, featureIndex) => (
-          <div key={featureIndex} className="flex items-center gap-3">
+        {features.map((feature) => (
+          <div key={feature} className="flex items-center gap-3">
             <div className={`w-2 h-2 bg-gradient-to-r ${color} rounded-full flex-shrink-0`} />
             <span className="text-gray-300 text-xs sm:text-sm font-light">
               {feature}
