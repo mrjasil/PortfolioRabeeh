@@ -178,7 +178,7 @@ export function Footer() {
                 Quick contact via WhatsApp
               </p>
               <a 
-                href="https://wa.me/919074463354" // Replace with your actual WhatsApp number
+                href="https://wa.me/8590153109" // Replace with your actual WhatsApp number
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2 bg-green-600/20 border border-green-600/30 rounded-lg text-green-400 text-sm font-medium hover:bg-green-600/30 hover:border-green-500/50 transition-all duration-300"
