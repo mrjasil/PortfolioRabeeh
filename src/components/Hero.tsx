@@ -381,8 +381,8 @@ export default function Hero() {
               <div className="absolute -inset-4 rounded-full border-2 border-gray-500/30 animate-spin-slow opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
               {/* Pulsing glow effect */}
-              <div className="absolute -inset-3 rounded-full bg-gradient-to-r from-gray-400/20 to-gray-300/20 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500 animate-pulse" />
-              
+              {/* <div className="absolute -inset-3 rounded-full bg-gradient-to-r from-gray-400/20 to-gray-300/20 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500 animate-pulse" /> */}
+
               {/* Floating dots around the profile */}
               <div className="absolute -top-3 -left-3 w-4 h-4 bg-gray-400/50 rounded-full animate-bounce" />
               <div className="absolute -top-3 -right-3 w-3 h-3 bg-gray-400/40 rounded-full animate-bounce delay-300" />

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FaInstagram, FaYoutube, FaFacebook, FaEnvelope } from "react-icons/fa";
+import { FaInstagram, FaYoutube, FaFacebook, FaEnvelope, FaWhatsapp } from "react-icons/fa";
 import { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
 
@@ -123,27 +123,69 @@ export function Footer() {
             
             <div className="flex justify-center md:justify-start space-x-4">
               {[
-                { icon: FaInstagram, href: "https://www.instagram.com/cine_vows_/", label: "Instagram" },
-                { icon: FaYoutube, href: "https://youtube.com", label: "YouTube" },
-                { icon: FaFacebook, href: "https://facebook.com", label: "Facebook" },
-                { icon: FaEnvelope, href: "mailto:Rbieeh3@gmail.com", label: "Email" }
-              ].map(({ icon: Icon, href, label }) => (
+                { 
+                  icon: FaInstagram, 
+                  href: "https://www.instagram.com/cine_vows_/", 
+                  label: "Instagram",
+                  color: "hover:text-pink-500"
+                },
+                { 
+                  icon: FaYoutube, 
+                  href: "https://youtube.com", 
+                  label: "YouTube",
+                  color: "hover:text-red-500"
+                },
+                { 
+                  icon: FaFacebook, 
+                  href: "https://facebook.com", 
+                  label: "Facebook",
+                  color: "hover:text-blue-500"
+                },
+                { 
+                  icon: FaWhatsapp, 
+                  href: "https://wa.me/918590153109", // Replace with your actual WhatsApp number
+                  label: "WhatsApp",
+                  color: "hover:text-green-500"
+                },
+                { 
+                  icon: FaEnvelope, 
+                  href: "mailto:Rbieeh3@gmail.com", 
+                  label: "Email",
+                  color: "hover:text-cyan-500"
+                }
+              ].map(({ icon: Icon, href, label, color }) => (
                 <a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noreferrer"
-                  className="p-3 bg-gray-800/30 rounded-xl border border-gray-700/50 hover:border-gray-500/50 transition-all duration-300"
+                  className="p-3 bg-gray-800/30 rounded-xl border border-gray-700/50 hover:border-gray-500/50 transition-all duration-300 group"
                   onMouseEnter={handleSocialHover}
                   onMouseLeave={handleSocialLeave}
                   aria-label={label}
                 >
                   <Icon 
                     size={20} 
-                    className="text-gray-400 hover:text-white transition-colors duration-300" 
+                    className={`text-gray-400 transition-colors duration-300 ${color}`} 
                   />
                 </a>
               ))}
+            </div>
+            
+            {/* WhatsApp Quick Contact */}
+            <div className="mt-6 text-center md:text-left">
+              <p className="text-xs xs:text-sm text-gray-400 font-light mb-2">
+                Quick contact via WhatsApp
+              </p>
+              <a 
+                href="https://wa.me/919074463354" // Replace with your actual WhatsApp number
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-green-600/20 border border-green-600/30 rounded-lg text-green-400 text-sm font-medium hover:bg-green-600/30 hover:border-green-500/50 transition-all duration-300"
+              >
+                <FaWhatsapp className="text-green-400" />
+                <span>Message Now</span>
+              </a>
             </div>
           </div>
         </div>
