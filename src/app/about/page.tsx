@@ -187,7 +187,7 @@ export default function About() {
 
             {/* Floating badge */}
             <div className="absolute -bottom-4 -right-4 bg-gray-900/90 backdrop-blur-sm border border-gray-700 rounded-lg px-4 py-2 transform rotate-3">
-              <span className="text-gray-300 text-sm font-light tracking-wider">DIRECTOR&apso;S VIEW</span>
+              <span className="text-gray-300 text-sm font-light tracking-wider">DIRECTORS VIEW</span>
             </div>
           </div>
         </div>
